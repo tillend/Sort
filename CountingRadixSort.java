@@ -1,5 +1,14 @@
 package Sort;
-
+/**
+ * @author LIn
+ * 算法名称：计数基数排序
+ * 算法描述：变长字符串的基数排序，使用in和out数组
+ * 效果：如同字典中索引排序
+ * 
+ * 复杂度分析：
+ * 1.平均时间复杂度：
+ * 2.空间复杂度：
+ */
 public class CountingRadixSort {
 	
 	public static void CountingRadixSort(String[] a, int stringLen){

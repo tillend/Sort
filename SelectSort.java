@@ -17,7 +17,7 @@ public class SelectSort {
 			int min = i;
 			for(int j = i + 1; j < a.length; j++){
 				if (a[j] < a[min]) { //如果有小于当前最小值的元素
-                    min = j;
+					min = j;
                 }
 			}
 			if (i != min){

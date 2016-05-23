@@ -23,10 +23,6 @@ public class QuickSort {
 	
 	/**
 	 * 普通选择基准
-	 * @param a
-	 * @param i
-	 * @param j
-	 * @return
 	 */
 	private static int Partition(int[] a, int i, int j){
 		//调用Partition(a,left,right)时，对a[left...right]做划分
