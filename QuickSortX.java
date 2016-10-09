@@ -14,7 +14,7 @@ package Sort;
  * 2.空间复杂度：O(logn)(最值元素存储空间)
  */
 public class QuickSortX {
-	private final static int CUTOFF = 10;  //截断范围
+	private final static int CUTOFF = 0;  //截断范围
 	
 	public static void QuickSort(int[] a, int left, int right){
 		if(left + CUTOFF <= right){
@@ -23,10 +23,11 @@ public class QuickSortX {
 			//开始划分
 			int i = left, j = right - 1;
 			for( ; ; ){
-				while(a[++i] < pivot){}
-				while(a[--j] > pivot){}
+				while(i < j && a[++i] < pivot){}
+				while(i < j && a[--j] > pivot){}
 				if(i < j){
 					swap(a, i, j);
+					
 				}
 				else{
 					break;

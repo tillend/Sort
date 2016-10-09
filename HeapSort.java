@@ -20,16 +20,12 @@ public class HeapSort {
 	public static void HeapSort(int[] a){
 		int i;
 		int len = a.length;
-		for(i = len / 2 - 1; i >= 0; i--){  /*调整堆*/
+		for(i = len / 2 - 1; i >= 0; i--){  /*初始堆*/
 			adjustMinHeap(a, i, len);  
 		}
 		for(i = len - 1; i > 0; i--){
 			swap(a, 0, i);                    /*删除最大值*/
 			adjustMinHeap(a, 0, i);         /*调整堆*/ 
-//			for(int j = 0; j < a.length; j++){
-//				System.out.print(a[j] + " ");
-//			}
-//			System.out.println();
 		}
 	}
 	

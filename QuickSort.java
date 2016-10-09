@@ -11,13 +11,17 @@ package Sort;
  * 2.空间复杂度：O(logn)(最值元素存储空间)
  */
 public class QuickSort {
+	
+	public static void quickSort(int[] a){
+		quickSort(a, 0, a.length);
+	}
 
-	public static void QuickSort(int[] a, int left, int right){
+	private static void quickSort(int[] a, int left, int right){
 		int pivotpos;  //划分后基准的位置
 		if(left < right){
 			pivotpos = Partition(a, left ,right);
-			QuickSort(a, left, pivotpos-1);
-			QuickSort(a, pivotpos+1, right);
+			quickSort(a, left, pivotpos);
+			quickSort(a, pivotpos+1, right);
 		}
 	}
 	
@@ -27,35 +31,49 @@ public class QuickSort {
 	private static int Partition(int[] a, int i, int j){
 		//调用Partition(a,left,right)时，对a[left...right]做划分
 		//并返回基准记录的位置
+		int flag = i;
 		int pivot = a[i];  //用区间的第一个记录作为基准
 		
-		while(i < j){  //从区间两端交替向中间扫描，直至i=j为止
-			while(i < j && a[j] >= pivot){   //pivot相当于在位置i上
-				j--;
+		while (true) {
+			while (i < j && a[--j] >= pivot)
+				;
+			while (i < j && a[++i] <= pivot)
+				;
+			if (i < j) {
+				swap(a, i, j);
+			} else {
+				break;
 			}
-			if(i < j){   //表示找到a[j]<pivot,交换a[i]和a[j]
-				a[i++] = a[j];
-			}
-			while(i < j && a[i] <= pivot){ //pivot相当于在位置j上
-				i++;     //从左到右扫描，查找第一个大于pivot的数组元素
-			}
-			if(i < j){   //表示找到a[i]>pivot,交换a[i]和a[j]
-				a[j--] = a[i];
-			}	
 		}
 		
-		a[i] = pivot;
+		swap(a, i, flag);
 		return i;
 	}
 	
-	public static void main(String[] args) {
-		int[] a = {4,2,1,6,3,6,0,-5,1,1};
-		QuickSort(a,0,a.length-1);
-		
-		for(int i = 0; i < a.length; i++){
-			System.out.printf("%d ",a[i]);
+	public static int find_K_Max(int[] a, int k){
+		int low = 0, high = a.length;
+		int target = 0;
+		while(low < high){
+			int pivot = Partition(a, low, high);
+			if(k - 1 == pivot){
+				target =  a[pivot];
+				break;
+			}else if(pivot > k - 1){
+				high = pivot;
+			}else{
+				low = pivot + 1;
+			}
+			
 		}
+		
+		return target;
+	}
+	
 
+	private static void swap(int[] a, int x, int y){
+		int temp = a[x];
+		a[x] = a[y];
+		a[y] = temp;
 	}
 
 }

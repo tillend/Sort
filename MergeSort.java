@@ -13,20 +13,20 @@ package Sort;
 public class MergeSort {
 	
 	/*public型的mergeSort是private型递归方法mergeSort的驱动程序*/
-	public static void MergeSort(int[] a){
+	public static void mergeSort(int[] a){
 		int[] tempArray = new int[a.length];   //若数组元素为对象类型，需创建Comparable类的数组，再强转为该对象类型
 		
-		MergeSort(a, tempArray, 0, a.length - 1);
+		mergeSort(a, tempArray, 0, a.length - 1);
 	}
 	
 	/**
 	 * 递归调用归并排序
 	 */
-	private static void MergeSort(int[] a, int[] tempArray, int left, int right){
+	private static void mergeSort(int[] a, int[] tempArray, int left, int right){
 		if(left < right){
 			int center = (left + right) / 2;
-			MergeSort(a, tempArray, left, center);
-			MergeSort(a, tempArray, center + 1, right);
+			mergeSort(a, tempArray, left, center);
+			mergeSort(a, tempArray, center + 1, right);
 			merge(a, tempArray, left, center + 1, right);   //子数组排序结束后，将子数组合并
 		}
 	}

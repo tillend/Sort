@@ -27,7 +27,7 @@ public class InsertSort {
 	//数组局部排序
 	public static void InsertSort(int[] a, int left, int right){
 		int j;
-		for(int i = left + 1; i < right; i++){
+		for(int i = left + 1; i <= right; i++){
 			int temp = a[i];
 			for(j = i; j > 0 && temp < a[j-1]; j--){
 				a[j] = a[j-1];
